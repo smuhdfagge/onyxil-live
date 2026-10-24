@@ -20,18 +20,18 @@
                 @include('partials.field', ['name' => 'budget', 'label' => 'Rough budget', 'type' => 'chips', 'options' => $budgets, 'full' => true])
                 @include('partials.field', ['name' => 'timeline', 'label' => 'When do you need it?', 'type' => 'chips', 'options' => $timelines, 'full' => true])
                 @include('partials.field', ['name' => 'details', 'label' => 'Tell us about the project', 'type' => 'textarea', 'required' => true, 'full' => true, 'hint' => 'What problem are you trying to solve? Who will use it? Is anything already in place?'])
-                <div class="field full"><button type="submit" class="btn btn-gold btn-lg" data-magnetic><span>Send project details</span>@include('partials.icon', ['name' => 'arrow', 'size' => 18])</button></div>
+                <div class="field full"><button type="submit" class="btn btn-primary btn-lg">Send project details @include('partials.icon', ['name' => 'arrow', 'size' => 18])</button></div>
             </form>
         </div>
         <aside class="aside-card">
             <h2>What happens next</h2>
-            <ol class="check-list" style="list-style:none">
+            <ol class="check-list">
                 <li>@include('partials.icon', ['name' => 'check', 'size' => 18])<span>We read your details and reply with any questions.</span></li>
                 <li>@include('partials.icon', ['name' => 'check', 'size' => 18])<span>A short call to understand the work, usually 30 minutes.</span></li>
                 <li>@include('partials.icon', ['name' => 'check', 'size' => 18])<span>A written plan with scope, timeline and cost.</span></li>
                 <li>@include('partials.icon', ['name' => 'check', 'size' => 18])<span>If it is a fit, we agree terms and start.</span></li>
             </ol>
-            <p style="margin-top:22px">Not ready for a project yet? <a href="{{ route('contact') }}">Send us a question instead</a>.</p>
+            <p class="aside-note">Not ready for a project yet? <a href="{{ route('contact') }}">Send us a question instead</a>.</p>
         </aside>
     </div>
 </section>

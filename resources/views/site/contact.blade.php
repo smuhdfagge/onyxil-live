@@ -18,8 +18,8 @@
                 @include('partials.field', ['name' => 'company', 'label' => 'Organisation', 'autocomplete' => 'organization'])
                 @include('partials.field', ['name' => 'subject', 'label' => 'Subject', 'full' => true])
                 @include('partials.field', ['name' => 'message', 'label' => 'Message', 'type' => 'textarea', 'required' => true, 'full' => true])
-                <div class="field full"><button type="submit" class="btn btn-gold btn-lg" data-magnetic><span>Send message</span>@include('partials.icon', ['name' => 'arrow', 'size' => 18])</button></div>
-                <p class="field full" style="color:var(--ash);font-size:.9rem;margin:0">We only use your details to reply to you. See our <a href="{{ url('privacy') }}">privacy policy</a>.</p>
+                <div class="field full"><button type="submit" class="btn btn-primary btn-lg">Send message @include('partials.icon', ['name' => 'arrow', 'size' => 18])</button></div>
+                <p class="field full form-note">We only use your details to reply to you. See our <a href="{{ url('privacy') }}">privacy policy</a>.</p>
             </form>
         </div>
 

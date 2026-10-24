@@ -5,20 +5,20 @@
 <section class="section">
     <div class="wrap split-layout">
         <div class="prose" data-reveal>
-            <h2 style="margin-top:0">Our story</h2>
+            <h2 class="h3">Our story</h2>
             {!! $story !!}
         </div>
         <aside class="aside-card" data-reveal>
             <h2>Work with us</h2>
             <p>We take on a small number of projects at a time so each one gets proper attention.</p>
-            <a href="{{ route('quote') }}" class="btn btn-gold"><span>Start a project</span></a>
-            <a href="{{ route('careers.index') }}" class="btn btn-line"><span>Join the team</span></a>
+            <a href="{{ route('quote') }}" class="btn btn-primary"><span>Start a project</span></a>
+            <a href="{{ route('careers.index') }}" class="btn btn-outline"><span>Join the team</span></a>
         </aside>
     </div>
 </section>
 
 @if (! empty($s['mission']) || ! empty($s['vision']))
-<section class="section" style="padding-top:0">
+<section class="section pt-0">
     <div class="wrap mv-grid">
         @if (! empty($s['mission']))<div class="mv" data-reveal><h2>Mission</h2><p>{{ $s['mission'] }}</p></div>@endif
         @if (! empty($s['vision']))<div class="mv" data-reveal><h2>Vision</h2><p>{{ $s['vision'] }}</p></div>@endif
@@ -27,12 +27,12 @@
 @endif
 
 @if ($values)
-<section class="section process">
+<section class="section section-alt">
     <div class="wrap">
-        <div class="section-head"><h2 class="h-display">What we hold ourselves to</h2></div>
-        <div class="values" style="border-color: rgba(26,21,13,.18)">
+        <div class="section-head"><h2 class="h2">What we hold ourselves to</h2></div>
+        <div class="values">
             @foreach ($values as [$v, $d])
-                <div class="value" data-reveal style="border-color: rgba(26,21,13,.18)"><h3>{{ $v }}</h3><p style="color: var(--ink-soft)">{{ $d }}</p></div>
+                <div class="value" data-reveal><h3>{{ $v }}</h3><p>{{ $d }}</p></div>
             @endforeach
         </div>
     </div>
@@ -42,7 +42,7 @@
 @if ($team->isNotEmpty())
 <section class="section">
     <div class="wrap">
-        <div class="section-head"><h2 class="h-display">The people</h2></div>
+        <div class="section-head"><h2 class="h2">The people</h2></div>
         <div class="team-grid">
             @foreach ($team as $m)
                 <article class="member" data-reveal>

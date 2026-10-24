@@ -4,7 +4,7 @@
 
 <section class="section">
     <div class="wrap">
-        <div class="section-head"><h2 class="h-display">Open roles</h2></div>
+        <div class="section-head"><h2 class="h2">Open roles</h2></div>
         @if ($jobs->isNotEmpty())
             <ul class="jobs">
                 @foreach ($jobs as $job)

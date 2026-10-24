@@ -4,13 +4,13 @@
 
 <section class="section">
     <div class="wrap">
-        <div class="tile-grid">
+        <div class="card-grid cols-3">
             @foreach ($services as $sv)
-                <a href="{{ route('services.show', $sv) }}" class="tile" data-reveal>
-                    <span class="tile-icon">@include('partials.icon', ['name' => $sv->icon, 'size' => 26, 'stroke' => 1.4])</span>
-                    <h2>{{ $sv->title }}</h2>
+                <a href="{{ route('services.show', $sv) }}" class="card svc-card" data-reveal>
+                    <span class="card-icon">@include('partials.icon', ['name' => $sv->icon, 'size' => 22])</span>
+                    <h2 class="card-title">{{ $sv->title }}</h2>
                     <p>{{ $sv->summary }}</p>
-                    <span class="link-arrow">Learn more @include('partials.icon', ['name' => 'arrow', 'size' => 16])</span>
+                    <span class="card-more">Learn more @include('partials.icon', ['name' => 'arrow', 'size' => 14])</span>
                 </a>
             @endforeach
         </div>
@@ -18,9 +18,9 @@
 </section>
 
 @if ($faqs->isNotEmpty())
-<section class="section" style="padding-top:0">
+<section class="section pt-0">
     <div class="wrap faq-grid">
-        <div class="section-head"><h2 class="h-display">Before you ask</h2></div>
+        <div class="section-head"><h2 class="h2">Before you ask</h2></div>
         @include('partials.faq', ['faqs' => $faqs])
     </div>
 </section>

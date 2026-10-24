@@ -12,10 +12,10 @@
                 @endforeach
             </div>
         @endif
-        <div class="work-grid">
+        <div class="card-grid cols-3">
             @forelse ($projects as $project)
-                <div data-cat="{{ \Illuminate\Support\Str::slug($project->industry) }}" @class(['is-wide' => $loop->first]) style="{{ $loop->first ? 'grid-column:1/-1' : '' }}">
-                    @include('partials.project-card', ['project' => $project, 'wide' => $loop->first])
+                <div data-cat="{{ \Illuminate\Support\Str::slug($project->industry) }}" class="filter-item">
+                    @include('partials.project-card', ['project' => $project])
                 </div>
             @empty
                 <p class="empty">Projects will appear here soon.</p>

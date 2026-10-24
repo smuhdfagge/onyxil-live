@@ -2,9 +2,9 @@
 @section('content')
 @include('partials.page-hero', ['title' => $project->title, 'lead' => $project->summary, 'crumbs' => ['Work' => route('work.index'), $project->title => route('work.show', $project)]])
 
-<section class="section" style="padding-top:clamp(40px,6vw,70px)">
+<section class="section section-tight">
     <div class="wrap">
-        <div class="article-cover" style="margin:0 0 40px;aspect-ratio:21/9" data-reveal>
+        <div class="article-cover" data-reveal>
             @if ($project->image)
                 <img src="{{ $project->mediaUrl() }}" alt="{{ $project->title }}" width="1600" height="686">
             @else

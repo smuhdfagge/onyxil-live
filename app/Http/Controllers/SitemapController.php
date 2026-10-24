@@ -76,8 +76,8 @@ class SitemapController extends Controller
             'short_name' => 'Onyx',
             'start_url' => '/',
             'display' => 'standalone',
-            'background_color' => '#0d0b08',
-            'theme_color' => '#0d0b08',
+            'background_color' => '#ffffff',
+            'theme_color' => '#0f2a4a',
             'icons' => [
                 ['src' => asset('images/icon-192.png'), 'sizes' => '192x192', 'type' => 'image/png'],
                 ['src' => asset('images/icon-512.png'), 'sizes' => '512x512', 'type' => 'image/png'],

@@ -11,7 +11,7 @@
 <header class="site-header" data-header>
     <div class="wrap header-inner">
         <a href="{{ route('home') }}" class="brand" aria-label="{{ $s['site_name'] ?? 'Onyx Innovations' }} home">
-            <img src="{{ asset('images/logo-light.png') }}" alt="Onyx Innovations Limited" width="148" height="66">
+            <img src="{{ asset('images/logo-dark.png') }}" alt="Onyx Innovations Limited" width="124" height="55">
         </a>
 
         <nav class="nav" aria-label="Main">
@@ -43,7 +43,7 @@
             </ul>
         </nav>
 
-        <a href="{{ route('quote') }}" class="btn btn-gold btn-sm header-cta" data-magnetic><span>Start a project</span></a>
+        <a href="{{ route('quote') }}" class="btn btn-primary btn-sm header-cta">Start a project</a>
 
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
             <span class="sr-only">Open menu</span>
@@ -61,7 +61,7 @@
                 <li><a href="{{ route('careers.index') }}">Careers</a></li>
             </ul>
         </nav>
-        <a href="{{ route('quote') }}" class="btn btn-gold"><span>Start a project</span></a>
+        <a href="{{ route('quote') }}" class="btn btn-primary">Start a project</a>
         <div class="mobile-contact">
             @if (! empty($s['email']))<a href="mailto:{{ $s['email'] }}">{{ $s['email'] }}</a>@endif
             @if (! empty($s['phone']))<a href="tel:{{ preg_replace('/\s+/', '', $s['phone']) }}">{{ $s['phone'] }}</a>@endif

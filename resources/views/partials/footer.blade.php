@@ -5,7 +5,6 @@
     ]);
 @endphp
 <footer class="site-footer">
-    <div class="footer-glow" aria-hidden="true"></div>
     <div class="wrap">
         <div class="footer-top">
             <div class="footer-brand">
@@ -28,7 +27,7 @@
                     <label class="sr-only" for="sub-email">Email address</label>
                     <input id="sub-email" type="email" name="email" placeholder="you@company.com" required autocomplete="email">
                     <input type="text" name="website_url" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-                    <button type="submit" class="btn btn-gold btn-sm"><span>Subscribe</span></button>
+                    <button type="submit" class="btn btn-accent btn-sm">Subscribe</button>
                     <p class="subscribe-msg" role="status" aria-live="polite">@if(session('subscribed')) You are on the list. Thank you. @endif</p>
                 </form>
             </div>
@@ -71,8 +70,6 @@
                 </ul>
             </div>
         </div>
-
-        <div class="footer-word" aria-hidden="true">ONYX</div>
 
         <div class="footer-bottom">
             <p>© {{ date('Y') }} Onyx Innovations Limited. @if(! empty($s['rc_number'])) RC {{ $s['rc_number'] }}. @endif All rights reserved.</p>

@@ -16,7 +16,7 @@
                 </ol>
             </nav>
         @endif
-        <h1 class="page-title" data-split>{{ $title }}</h1>
+        <h1 class="page-title">{{ $title }}</h1>
         @if (! empty($lead))<p class="page-lead">{{ $lead }}</p>@endif
         {{ $slot ?? '' }}
     </div>

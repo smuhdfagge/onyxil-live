@@ -16,10 +16,10 @@
             </form>
         </div>
 
-        @if ($q)<p style="color:var(--ash);margin-bottom:30px">{{ $posts->total() }} {{ \Illuminate\Support\Str::plural('result', $posts->total()) }} for “{{ $q }}”.</p>@endif
+        @if ($q)<p class="result-note">{{ $posts->total() }} {{ \Illuminate\Support\Str::plural('result', $posts->total()) }} for “{{ $q }}”.</p>@endif
 
         @if ($posts->isNotEmpty())
-            <div class="post-grid">
+            <div class="card-grid cols-3">
                 @foreach ($posts as $post)
                     @include('partials.post-card', ['post' => $post])
                 @endforeach

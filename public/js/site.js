@@ -46,9 +46,9 @@
         const y = window.scrollY;
         const max = document.body.scrollHeight - window.innerHeight;
         if (header) {
-            header.classList.toggle('is-scrolled', y > 30);
+            header.classList.toggle('is-scrolled', y > 8);
             const menuOpen = doc.classList.contains('menu-open');
-            header.classList.toggle('is-hidden', !menuOpen && y > 400 && y > lastY + 4);
+            header.classList.toggle('is-hidden', !menuOpen && y > 600 && y > lastY + 6);
             if (y < lastY - 4) header.classList.remove('is-hidden');
         }
         if (progress && max > 0) progress.style.setProperty('--p', Math.min(1, y / max).toFixed(4));
@@ -287,7 +287,7 @@
         };
 
         const mix = (a, b, k) => a.map((c, i) => Math.round(c + (b[i] - c) * k));
-        const onyx = [16, 12, 6]; const bronze = [96, 66, 14]; const gold = [214, 160, 46]; const shine = [246, 222, 150];
+        const deep = [8, 24, 44]; const navy = [20, 52, 92]; const steel = [52, 104, 160]; const gold = [214, 162, 52]; const shine = [250, 228, 160];
 
         const draw = (time) => {
             if (!running) return;
@@ -295,11 +295,11 @@
                 if (!reduced) rotY += 0.0018;
                 leanX += (targetLeanX - leanX) * 0.04;
                 leanY += (targetLeanY - leanY) * 0.04;
-                const ay = rotY + leanX * 0.6;
+                const ay = rotY + leanX * 0.3;
                 const ax = rotX + leanY * 0.4 + Math.sin(time / 4000) * 0.05;
                 const cy = Math.cos(ay), sy = Math.sin(ay), cx = Math.cos(ax), sx = Math.sin(ax);
-                const R = Math.min(W * 0.34, H * 0.28);
-                const ox = W * 0.56; const oy = H * 0.47;
+                const R = Math.min(W, H) * 0.3;
+                const ox = W * 0.55; const oy = H * 0.44;
 
                 const proj = verts.map(([x, y, z]) => {
                     let x1 = x * cy + z * sy; let z1 = -x * sy + z * cy;
@@ -312,7 +312,7 @@
 
                 // Soft glow behind the stone
                 const g = ctx.createRadialGradient(ox, oy, R * 0.2, ox, oy, R * 1.9);
-                g.addColorStop(0, 'rgba(184,134,27,0.22)'); g.addColorStop(1, 'rgba(184,134,27,0)');
+                g.addColorStop(0, 'rgba(228,189,98,0.16)'); g.addColorStop(1, 'rgba(228,189,98,0)');
                 ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
 
                 const list = faces.map((f) => {
@@ -327,11 +327,12 @@
                 list.forEach(({ f, n }) => {
                     const d = Math.max(0, n[0] * light[0] + n[1] * light[1] + n[2] * light[2]);
                     const rim = Math.pow(1 - n[2], 2);
-                    // Mostly polished black stone; gold only where the light catches it.
-                    const k = Math.pow(d, 2.2);
-                    let col = k < 0.45 ? mix(onyx, [40, 30, 12], k / 0.45) : k < 0.8 ? mix([40, 30, 12], bronze, (k - 0.45) / 0.35) : mix(bronze, gold, (k - 0.8) / 0.2);
-                    if (d > 0.93) col = mix(col, shine, (d - 0.93) / 0.07 * 0.7);
-                    col = mix(col, gold, rim * 0.55);
+                    // Navy stone; gold only where the light catches it.
+                    const k = Math.pow(d, 1.6);
+                    let col = k < 0.5 ? mix(deep, navy, k / 0.5) : mix(navy, steel, (k - 0.5) / 0.5);
+                    if (d > 0.9) col = mix(col, gold, (d - 0.9) / 0.1 * 0.85);
+                    if (d > 0.97) col = mix(col, shine, (d - 0.97) / 0.03 * 0.6);
+                    col = mix(col, gold, rim * 0.35);
                     ctx.beginPath();
                     ctx.moveTo(proj[f[0]][0], proj[f[0]][1]);
                     ctx.lineTo(proj[f[1]][0], proj[f[1]][1]);
@@ -339,7 +340,7 @@
                     ctx.closePath();
                     ctx.fillStyle = `rgb(${col[0]},${col[1]},${col[2]})`;
                     ctx.fill();
-                    ctx.strokeStyle = `rgba(226,180,78,${0.18 + d * 0.4})`;
+                    ctx.strokeStyle = `rgba(228,189,98,${0.22 + d * 0.35})`;
                     ctx.lineWidth = 0.8;
                     ctx.stroke();
                 });
@@ -351,7 +352,7 @@
                     const px = ox + Math.cos(a) * rr;
                     const py = oy + Math.sin(a) * rr * 0.42 + Math.sin(a * 2 + i) * 6;
                     const front = Math.sin(a) > 0;
-                    ctx.fillStyle = front ? 'rgba(243,238,228,0.75)' : 'rgba(226,180,78,0.35)';
+                    ctx.fillStyle = front ? 'rgba(255,255,255,0.7)' : 'rgba(228,189,98,0.4)';
                     ctx.beginPath(); ctx.arc(px, py, front ? 1.6 : 1.1, 0, Math.PI * 2); ctx.fill();
                 }
             }
@@ -388,9 +389,9 @@
             W = r.width; H = r.height;
             canvas.width = W * dpr; canvas.height = H * dpr;
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            const count = Math.round((W * H) / 16000 * density);
+            const count = Math.round((W * H) / 22000 * density);
             pts = Array.from({ length: count }, () => ({
-                x: W * (0.35 + Math.random() * 0.65), y: Math.random() * H,
+                x: W * (0.55 + Math.random() * 0.45), y: Math.random() * H,
                 vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
             }));
         };
@@ -399,7 +400,7 @@
                 ctx.clearRect(0, 0, W, H);
                 for (const p of pts) {
                     if (!reduced) { p.x += p.vx; p.y += p.vy; }
-                    if (p.x < W * 0.3 || p.x > W) p.vx *= -1;
+                    if (p.x < W * 0.5 || p.x > W) p.vx *= -1;
                     if (p.y < 0 || p.y > H) p.vy *= -1;
                 }
                 for (let i = 0; i < pts.length; i++) {
@@ -408,13 +409,13 @@
                         const b = pts[j];
                         const d = Math.hypot(a.x - b.x, a.y - b.y);
                         if (d < 130) {
-                            ctx.strokeStyle = `rgba(226,180,78,${(1 - d / 130) * 0.22})`;
+                            ctx.strokeStyle = `rgba(23,64,110,${(1 - d / 130) * 0.16})`;
                             ctx.lineWidth = 0.7;
                             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
                         }
                     }
                     const md = Math.hypot(a.x - mouse.x, a.y - mouse.y);
-                    ctx.fillStyle = md < 140 ? 'rgba(246,222,150,.95)' : 'rgba(226,180,78,.55)';
+                    ctx.fillStyle = md < 140 ? 'rgba(200,149,31,.9)' : 'rgba(23,64,110,.28)';
                     ctx.beginPath(); ctx.arc(a.x, a.y, md < 140 ? 2.2 : 1.4, 0, Math.PI * 2); ctx.fill();
                 }
             }

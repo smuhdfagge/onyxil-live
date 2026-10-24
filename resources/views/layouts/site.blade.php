@@ -15,8 +15,8 @@
     @if (! empty($s['seo_keywords']))<meta name="keywords" content="{{ $s['seo_keywords'] }}">@endif
     <meta name="robots" content="{{ $seo->index ? 'index, follow, max-image-preview:large' : 'noindex, follow' }}">
     <link rel="canonical" href="{{ $canonical }}">
-    <meta name="theme-color" content="#0e0b07">
-    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f2a4a">
+    <meta name="color-scheme" content="light">
     <meta name="format-detection" content="telephone=no">
 
     <meta property="og:site_name" content="{{ $siteName }}">
@@ -43,8 +43,8 @@
     <link rel="manifest" href="{{ url('site.webmanifest') }}">
     <link rel="alternate" type="application/rss+xml" title="{{ $siteName }} insights" href="{{ route('feed') }}">
 
-    <link rel="preload" href="{{ asset('fonts/barlow-condensed-latin-700-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ asset('fonts/hanken-grotesk-latin-400-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/hanken-grotesk-latin-700-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ asset('css/site.css') }}?v={{ filemtime(public_path('css/site.css')) }}">
     <script>document.documentElement.classList.replace('no-js','js')</script>
 

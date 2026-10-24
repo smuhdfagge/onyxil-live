@@ -10,7 +10,7 @@
 </head>
 <body class="login-body">
     <main class="login">
-        <img src="{{ asset('images/logo-light.png') }}" alt="Onyx Innovations Limited" width="170" class="login-logo">
+        <img src="{{ asset('images/logo-dark.png') }}" alt="Onyx Innovations Limited" width="150" class="login-logo">
         <form method="post" action="{{ route('login.attempt') }}" class="login-card">
             @csrf
             <h1>Sign in to the admin</h1>
