@@ -6,7 +6,6 @@
 <section class="hero">
     <div class="wrap hero-grid">
         <div class="hero-copy">
-            <p class="eyebrow-pill" data-load="1"><span class="dot" aria-hidden="true"></span>ICT company in Kano, working across Nigeria</p>
             <h1 class="hero-title" data-load="2">{{ $s['hero_title'] ?? 'We build the systems behind the work.' }}</h1>
             <p class="hero-text" data-load="3">{{ $s['hero_text'] ?? '' }}</p>
             <div class="btn-row" data-load="4">
