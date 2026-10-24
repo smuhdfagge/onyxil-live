@@ -1,0 +1,7 @@
+# Only for shared hosting where you cannot point the domain at the /public folder.
+# Copy this file to the project root, rename it to .htaccess, and it will send
+# every request into /public so the rest of the code stays private.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
